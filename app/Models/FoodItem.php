@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @attribute string $name
@@ -20,7 +20,7 @@ class FoodItem extends Model
 {
     use HasFactory;
 
-    protected $attributes = [
+    protected $fillable = [
         'name',
         'measure',
         'calories',
@@ -30,8 +30,8 @@ class FoodItem extends Model
         'fibre',
     ];
 
-    public function foodCategory(): HasOne
+    public function foodCategory(): BelongsTo
     {
-        return $this->hasOne(FoodCategory::class);
+        return $this->belongsTo(FoodCategory::class);
     }
 }
