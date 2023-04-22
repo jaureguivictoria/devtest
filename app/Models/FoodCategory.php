@@ -13,7 +13,8 @@ class FoodCategory extends Model
 {
     use HasFactory;
 
-    protected $attributes = [
+    public $fillable = [
         'name'
     ];
+
 }
