@@ -18,12 +18,12 @@ class FoodItem extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'calories' => $this->name,
-            'measure' => $this->name,
-            'fat' => $this->name,
-            'protein' => $this->name,
-            'carbs' => $this->name,
-            'fibre' => $this->name,
+            'calories' => $this->calories.' kcal',
+            'measure' => $this->measure,
+            'fat' => $this->fat,
+            'protein' => $this->protein,
+            'carbs' => $this->carbs,
+            'fibre' => $this->fibre,
         ];
     }
 }

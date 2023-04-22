@@ -11,6 +11,13 @@ use League\Csv\Reader;
 
 class FoodItemController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        return new FoodItemCollection(FoodItem::paginate());
+    }
 
     public function upload(UploadFoodItemsCSVRequest $request): Response
     {

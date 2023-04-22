@@ -19,4 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('food_items',[FoodItemController::class, 'index']);
+
 Route::post('food_items/upload',[FoodItemController::class, 'upload']);
