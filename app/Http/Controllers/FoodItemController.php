@@ -16,7 +16,9 @@ class FoodItemController extends Controller
      */
     public function index()
     {
-        return new FoodItemCollection(FoodItem::paginate());
+        $perPage = request()->query('per_page', 15);
+
+        return new FoodItemCollection(FoodItem::paginate($perPage));
     }
 
     public function upload(UploadFoodItemsCSVRequest $request): Response
