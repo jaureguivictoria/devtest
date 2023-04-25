@@ -43,4 +43,15 @@ class UploadFoodItemsCSVTest extends TestCase
 
         $response->assertJsonValidationErrorFor('file');
     }
+
+    public function test_cannot_upload_empty_food_items(): void
+    {
+        $file = UploadedFile::fake()->create('items.csv', 100, 'text/csv');
+
+        $response = $this->postJson('/api/food_items/upload', ['file' => $file]);
+
+        $response->assertStatus(422);
+
+        $response->assertJsonValidationErrorFor('file');
+    }
 }

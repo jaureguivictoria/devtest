@@ -6,8 +6,9 @@ use App\Http\Requests\UploadFoodItemsCSVRequest;
 use App\Http\Resources\FoodItemCollection;
 use App\Models\FoodCategory;
 use App\Models\FoodItem;
-use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
 use League\Csv\Reader;
+use Throwable;
 
 class FoodItemController extends Controller
 {
@@ -21,15 +22,24 @@ class FoodItemController extends Controller
         return new FoodItemCollection(FoodItem::paginate($perPage));
     }
 
-    public function upload(UploadFoodItemsCSVRequest $request): Response
+    public function upload(UploadFoodItemsCSVRequest $request): JsonResponse
     {
         $csvFile = $request->file('file');
 
         $csv = Reader::createFromPath($csvFile->getRealPath());
 
-        $csv->setHeaderOffset(0);
+        try {
+            // Ignore header row
+            $csv->setHeaderOffset(0);
 
-        $records = $csv->getRecords();
+            $records = $csv->getRecords();
+
+        } catch (Throwable $e) {
+            return response()->json([
+                'message' => 'The CSV could not be processed.',
+                'errors' => ['file' => 'Invalid CVS Data']
+            ], 422);
+        }
 
         foreach($records as $record)
         {
@@ -50,6 +60,6 @@ class FoodItemController extends Controller
             $item->save();
         }
 
-        return response('Upload successfull');
+        return response()->json(['message' => 'Upload successfull']);
     }
 }
