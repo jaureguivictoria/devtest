@@ -6,10 +6,13 @@ An example CSV can be found in the repository. Download it [here](https://github
 
 ## Configuration
 
+The project works out of the box with Laravel Sail using Docker.
+
 ### Prerequisites
 
+- [Composer](https://getcomposer.org/)
 - [Laravel](https://laravel.com/docs/10.x#laravel-and-docker)
-- [Docker desktop](https://laravel.com/docs/10.x#laravel-and-docker)
+- [Docker](https://laravel.com/docs/10.x#laravel-and-docker)
 
 ### Installation
 
@@ -18,13 +21,34 @@ An example CSV can be found in the repository. Download it [here](https://github
 git clone git@github.com:jaureguivictoria/devtest.git
 ```
 
+- Enter the new project folder
+```console
+cd devtest
+```
+
+- Run composer install
+```console
+composer install
+```
+
+- Set your own environment keys
+```console
+cp .env.example .env
+```
+
 - Run sail build
 ```console
 ./vendor/bin/sail build
 ```
+
 - Run sail up
 ```console
 ./vendor/bin/sail up
+```
+
+- Run the migrations
+```console
+./vendor/bin/sail artisan migrate
 ```
 
 - Go to [localhost:80](localhost:80) to see the frontend
@@ -32,7 +56,18 @@ git clone git@github.com:jaureguivictoria/devtest.git
 
 ## API Documentation
 
-The API Documentation can be found here: [https://documenter.getpostman.com/view/6448092/2s93Y6rdnV](https://documenter.getpostman.com/view/6448092/2s93Y6rdnV). 
+The API Documentation is in Postman, and can be found here: [https://documenter.getpostman.com/view/6448092/2s93Y6rdnV](https://documenter.getpostman.com/view/6448092/2s93Y6rdnV). 
+
+
+## Tests
+
+The API Feature tests are inside the ```app/tests/``` folder.
+
+They can be run using the following command:
+
+```console
+./vendor/bin/sail artisan test
+```
 
 ## License
 
