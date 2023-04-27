@@ -13,6 +13,11 @@ class SearchFoodItems extends Component
 
     public $search;
 
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
         $foodItems = new FoodItemCollection(FoodItem::where('name', 'like', '%'.$this->search.'%')->paginate());
