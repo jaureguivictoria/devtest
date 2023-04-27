@@ -73,4 +73,9 @@ class FoodItemController extends Controller
 
         return response()->json(['message' => 'Upload successfull']);
     }
+
+    public function welcome()
+    {
+        return view('welcome');
+    }
 }
