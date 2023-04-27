@@ -1,4 +1,4 @@
-<div>
+<div class="container mx-auto">
     <label class="relative block">
         <span class="sr-only">Search</span>
         <span class="absolute inset-y-0 left-0 flex items-center pl-2">
