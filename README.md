@@ -4,6 +4,8 @@ This is a Laravel Application that allows you to upload a CSV with Food items an
 
 An example CSV can be found in the repository. Download it [here](https://github.com/jaureguivictoria/devtest/blob/main/samplefooddata.csv);
 
+The frontend is built using [Livewire](https://laravel-livewire.com/). It is pretty basic functionality, allowing the listing and searching of items by name.
+
 ## Configuration
 
 The project works out of the box with Laravel Sail using Docker.
@@ -51,7 +53,9 @@ cp .env.example .env
 ./vendor/bin/sail artisan migrate
 ```
 
-- Go to [localhost:80](localhost:80) to see the frontend
+## Frontend
+
+Go to [localhost:80](localhost:80) to see the frontend. There is a single page which contains a paginated table of all the food items, as well as a search by name filter.
 
 
 ## API Documentation
